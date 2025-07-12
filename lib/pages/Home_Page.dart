@@ -29,9 +29,62 @@ class _HomePageState extends State<HomePage> {
       ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu, color: Colors.black),
+        leading: Builder(
+          builder: (context) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(Icons.menu, color: Colors.black),
+              ),
+            );
+          },
+        ),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.grey[900],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                DrawerHeader(
+                  child: Image.asset(
+                    'lib/Images/nike-logo.png',
+                    color: Colors.white,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Divider(color: Colors.grey[900]),
+                ),
+                const Padding(
+                  padding: const EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(Icons.home, color: Colors.white),
+                    title: Text("Home", style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+                const Padding(
+                  padding: const EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(Icons.info, color: Colors.white),
+                    title: Text("About", style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+              ],
+            ),
+
+            const Padding(
+              padding: const EdgeInsets.only(left: 25.0, bottom: 25),
+              child: ListTile(
+                leading: Icon(Icons.logout, color: Colors.white),
+                title: Text("Logout", style: TextStyle(color: Colors.white)),
+              ),
+            ),
+          ],
         ),
       ),
       body: _pages[_selectedIndex],
