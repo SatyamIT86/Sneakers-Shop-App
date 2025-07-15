@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sneakers_shop_app/Models/Shoe.dart';
 import 'package:sneakers_shop_app/components/ShoeTile.dart';
 
 class ShopPage extends StatefulWidget {
@@ -58,10 +59,22 @@ class _ShopPageState extends State<ShopPage> {
         const SizedBox(height: 20),
         Expanded(
           child: ListView.builder(
+            itemCount: 4,
+            scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return ShoeTile();
+              Shoe shoe = Shoe(
+                name: "Air Jordan",
+                price: "80000",
+                imagepath: "lib/Images/airjordan.png",
+                description: "Awesome Shoes",
+              );
+              return ShoeTile(shoe: shoe);
             },
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 25.0, left: 25, right: 25),
+          child: Divider(color: Colors.grey[300]),
         ),
       ],
     );
